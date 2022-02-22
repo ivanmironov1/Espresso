@@ -24,13 +24,52 @@
        <attribute name="title">
         <string>Фильмы</string>
        </attribute>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>111</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Добавить фильм</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>10</y>
+          <width>121</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Изменить фильм</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>10</y>
+          <width>111</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Удалить фильм</string>
+        </property>
+       </widget>
        <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
          <rect>
           <x>5</x>
-          <y>11</y>
+          <y>51</y>
           <width>761</width>
-          <height>501</height>
+          <height>461</height>
          </rect>
         </property>
        </widget>
