@@ -5,6 +5,9 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QPushButton, QTableWidget, QStatusBar, QDialog, \
     QMessageBox, QInputDialog
 
+from UI.main_ui import Ui_MainWindow
+from UI.dialog_ui import Ui_Form
+
 
 class TitleException(Exception):
     pass
@@ -38,7 +41,7 @@ def check_genres(title):
 
 class DataBase:
     def __init__(self):
-        self.connection = sqlite3.connect('coffee.db')
+        self.connection = sqlite3.connect('data/coffee.db')
         self.cursor = self.connection.cursor()
 
     def get_roasts(self):
@@ -108,12 +111,12 @@ WHERE id = ?''', (sort_id, roast_id, description, price, grains_or_ground, id))
         self.connection.commit()
 
 
-class Window(QMainWindow):
+class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(Window, self).__init__()
-        uic.loadUi('main.ui', self)
+        super().__init__()
 
         self.temp_id = 0
+        self.setupUi(self)
         self.initUI()
 
     def update_table_films(self):
@@ -164,11 +167,11 @@ class Window(QMainWindow):
             self.update_table_films()
 
 
-class DialogNew(QDialog):
+class DialogNew(QDialog, Ui_Form):
     def __init__(self, parent):
-        super(DialogNew, self).__init__()
+        super().__init__()
         self.parent = parent
-        uic.loadUi('dialog_film.ui', self)
+        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
@@ -262,6 +265,7 @@ def except_hook(cls, exception, traceback):
 
 if __name__ == '__main__':
     data_base = DataBase()
+
     app = QApplication(sys.argv)
     ex = Window()
     ex.show()
